@@ -42,15 +42,13 @@ class _MainShellState extends State<MainShell> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBody: true,
-      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
           _titles[_index],
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.teal.shade700,
+        backgroundColor: Colors.grey.shade50,
+        foregroundColor: Color(0xFF315660),
         elevation: 0,
         centerTitle: true,
       ),

@@ -165,7 +165,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final bool isAnalyzing = _phase == RecordingPhase.analyzing;
 
     final Color micColor =
-        isRecording ? Colors.red.shade600 : const Color(0xFF00897B);
+        isRecording ? Colors.red.shade600 : const Color(0xFF315660);
     final IconData micIcon = isRecording ? Icons.stop : Icons.mic;
 
     return SafeArea(

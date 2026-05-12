@@ -25,42 +25,37 @@ class FloatingNavBar extends StatelessWidget {
   });
 
   // Visual tokens — kept here so the look stays consistent.
-  static const Color _barColor = Color(0xFF00897B);
-  static const Color _activeColor = Colors.white; // Colors.deepPurpleAccent; --- IGNORE ---
+  static const Color _barColor = Colors.white;
+  static const Color _activeColor = Color(0xFF1a434e); // Colors.deepPurpleAccent; --- IGNORE ---
   static const Color _iconColor = Colors.white;
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      top: false,
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 8, 20, 16),
-        child: Container(
-          decoration: BoxDecoration(
-            color: _barColor,
-            borderRadius: BorderRadius.circular(40),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withValues(alpha: 0.18),
-                blurRadius: 18,
-                offset: const Offset(0, 6),
-              ),
-            ],
-          ),
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: List.generate(items.length, (i) {
-              return _NavItemTile(
-                item: items[i],
-                active: i == currentIndex,
-                activeColor: Colors.white, // _activeColor, --- IGNORE ---
-                iconColor: (i == currentIndex) ? Colors.teal.shade600 : Colors.white, // _iconColor, --- IGNORE ---
-                onTap: () => onTap(i),
-              );
-            }),
-          ),
+    final double bottomInset = MediaQuery.of(context).viewPadding.bottom;
+
+    return Container(
+      decoration: const BoxDecoration(
+        color: _barColor,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
         ),
+        border: Border(
+          top: BorderSide(color: Colors.black12, width: 1),
+        ),
+      ),
+      padding: EdgeInsets.fromLTRB(8, 16, 8, 8 + bottomInset),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: List.generate(items.length, (i) {
+          return _NavItemTile(
+            item: items[i],
+            active: i == currentIndex,
+            activeColor: Color(0xFF1a434e), // _activeColor, --- IGNORE ---
+            iconColor: (i == currentIndex) ?  Colors.white : Color(0xFF1a434e), // _iconColor, --- IGNORE ---
+            onTap: () => onTap(i),
+          );
+        }),
       ),
     );
   }
@@ -97,7 +92,7 @@ class _NavItemTile extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(item.icon, color: iconColor, size: 22),
+            Icon(item.icon, color: iconColor, size: 26),
             // AnimatedSize collapses the label to width 0 when inactive,
             // so tapping a tab smoothly grows the pill.
             ClipRect(
@@ -111,7 +106,7 @@ class _NavItemTile extends StatelessWidget {
                           item.label,
                           style: TextStyle(
                             color: iconColor,
-                            fontSize: 14,
+                            fontSize: 16,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
