@@ -42,6 +42,9 @@ class _MainShellState extends State<MainShell> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // Keyboard is allowed to overlap the bottom nav; individual screens
+      // (e.g. Consult) handle the keyboard inset on their own input fields.
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(
           _titles[_index],
