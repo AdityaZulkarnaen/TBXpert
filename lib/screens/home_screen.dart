@@ -165,28 +165,16 @@ class _HomeScreenState extends State<HomeScreen> {
     final bool isAnalyzing = _phase == RecordingPhase.analyzing;
 
     final Color micColor =
-        isRecording ? Colors.red.shade600 : Colors.teal.shade600;
+        isRecording ? Colors.red.shade600 : const Color(0xFF00897B);
     final IconData micIcon = isRecording ? Icons.stop : Icons.mic;
 
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: const Text(
-          'TBXpert',
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.teal.shade700,
-        elevation: 0,
-        centerTitle: true,
-      ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 16),
-          child: SizedBox(
-            width: double.infinity,
-            child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center, // Horizontal ke tengah
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 16),
+        child: SizedBox(
+          width: double.infinity,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(height: 16),
               Text(
@@ -231,7 +219,6 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 8),
             ],
           ),
-          )
         ),
       ),
     );
